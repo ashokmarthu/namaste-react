@@ -52,11 +52,13 @@
   gap: 5px;
   width: 300px;
 }
+.rest-logo {
+  width: 100%;
+  object-fit: cover;
+}
 .res-img {
   overflow: hidden;
   border-radius: 15px;
-  width: 100%;
-  object-fit: cover;
 }
 .res-content {
   margin-left: 12px;

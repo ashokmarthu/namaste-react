@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import Footer from "./Footer";
 import { RESTAURANT_DETAIS_API } from "../utils/constants";
 const Body = () => {
   const [resDetails, setResDetails] = useState([]);
@@ -37,9 +36,6 @@ const Body = () => {
         {resDetails.map((details) => (
           <RestaurantCard data={details.info} />
         ))}
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );

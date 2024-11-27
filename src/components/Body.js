@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { RESTAURANT_DETAIS_API } from "../utils/constants";
+import Shimmer from "./Shimmer";
 const Body = () => {
   const [resDetails, setResDetails] = useState([]);
-
+  const fillArray = new Array(30).fill(0);
   const fetchResDetails = async () => {
     try {
       const res = await fetch(RESTAURANT_DETAIS_API);
@@ -33,9 +34,10 @@ const Body = () => {
         </div>
       </div>
       <div className="res-container">
-        {resDetails.map((details) => (
-          <RestaurantCard data={details.info} />
-        ))}
+        {resDetails.length > 0
+          ? resDetails.map((details) => <RestaurantCard data={details.info} />)
+          : fillArray.map((i, index) => <Shimmer />)
+          }
       </div>
     </div>
   );

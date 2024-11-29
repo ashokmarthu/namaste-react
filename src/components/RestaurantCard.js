@@ -7,9 +7,7 @@ const RestaurantCard = ({ data }) => {
     cuisines,
     areaName,
     cloudinaryImageId,
-    lastMileTravelString,
     sla,
-    costForTwo,
   } = data;
   return (
     <div className="rest-card">

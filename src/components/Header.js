@@ -1,30 +1,34 @@
 import React from "react";
-import { AiOutlineUser } from "react-icons/ai";
-
+import Logout from "./Logout";
+import { Link } from "react-router";
+import { HEADER_LOGO } from "../utils/constants";
 const Header = () => {
-
   return (
     <div className="header">
       <div className="header-logo">
         <img
-          src="https://foodfire-app.netlify.app/foodFireLogo.adc19524.png"
+          src={HEADER_LOGO}
           width="70px"
           height="70px"
           alt="food-logo"
-          style={{ borderRadius: "10px", objectFit: "cover" }}
+          className="header-img"
         />
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li className="">
-            <AiOutlineUser width="24px" height="24px" />
-            SignIn
+          <li>
+            <Link to="/about" className="link">
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/cart" className="link">
+              Cart
+            </Link>
           </li>
         </ul>
       </div>
+      <Logout />
     </div>
   );
 };

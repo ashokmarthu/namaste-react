@@ -4,4 +4,6 @@ const RESTAURANT_DETAIS_API =
 const RESTAURANT_IMAGE_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-export { RESTAURANT_DETAIS_API, RESTAURANT_IMAGE_URL };
+const HEADER_LOGO = "https://foodfire-app.netlify.app/foodFireLogo.adc19524.png"
+
+export { RESTAURANT_DETAIS_API, RESTAURANT_IMAGE_URL,HEADER_LOGO };

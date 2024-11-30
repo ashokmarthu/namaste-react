@@ -12,6 +12,11 @@
 }
 .header-logo {
   padding: 5px 20px;
+  width: 50%;
+}
+.header-img {
+  border-radius: "10px";
+  object-fit: "cover";
 }
 .nav-items > ul {
   display: flex;
@@ -26,10 +31,26 @@
   text-align: center;
   display: flex;
 }
-.nav-items ul li:hover {
-  background-color: orange;
-  border-radius: 5px;
-  color: white;
+.link {
+  text-decoration: none;
+  color: #545454;
+}
+.logout-fn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0px 20px;
+  width: 5%;
+  align-items: center;
+  justify-content: center;
+}
+.logout {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #0096d6;
+  border-radius: 4px;
+  padding: 6px 10px;
 }
 .search {
   padding: 40px 0px;
@@ -138,10 +159,10 @@
   width: 200px;
   height: 150px;
   border-radius: 6px;
-  box-shadow: 0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;
+  box-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;
   margin-bottom: 6px;
 }
-.shimmer-col{
+.shimmer-col {
   gap: 6px;
   flex-direction: column;
   display: flex;

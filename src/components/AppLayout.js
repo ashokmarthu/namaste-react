@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { useSelector } from "react-redux";
 const AppLayout = () => {
   const details = useSelector((store) => store.user.userDetails);
-  console.log(details, "details");
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   return (
     <BrowserRouter>
       <Routes>
@@ -14,7 +14,8 @@ const AppLayout = () => {
         <Route
           path="/dashboard"
           element={
-            details && details.stsTokenManager.accessToken ? (
+            (details && details.stsTokenManager.accessToken) ||
+            (userDetails && userDetails.stsTokenManager.accessToken) ? (
               <>
                 <Header />
                 <Body />

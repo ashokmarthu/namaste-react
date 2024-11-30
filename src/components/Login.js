@@ -1,18 +1,16 @@
+import { signInWithGooglePopup } from "./Firebase";
 import { setUserDetails } from "../reducers/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const signInWithGoogle = () => {
+  const signInWithGoogle = async () => {
     try {
-      const res = {
-        stsTokenManager: {
-          accessToken: "hello",
-        },
-      };
-      const user = res;
+      const res = await signInWithGooglePopup();
+      const user = res.user;
       dispatch(setUserDetails(user));
+      localStorage.setItem("userDetails", JSON.stringify(user));
       navigate("/dashboard");
     } catch (err) {
       console.error(err);

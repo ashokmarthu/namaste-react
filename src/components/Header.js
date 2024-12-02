@@ -1,5 +1,5 @@
 import React from "react";
-import Logout from "./Logout";
+// import Logout from "./Logout";
 import { Link } from "react-router";
 import { HEADER_LOGO } from "../utils/constants";
 const Header = () => {
@@ -28,7 +28,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <Logout />
+      {/* <Logout /> */}
     </div>
   );
 };

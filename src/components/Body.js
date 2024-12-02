@@ -43,8 +43,11 @@ const Body = () => {
     <div className="body">
       <div className="search">
         <div>
+          <label htmlFor="searchText" />
           <input
             type="text"
+            id="searchText"
+            name="searchText"
             value={searchedText}
             className="search-input"
             placeholder="search for restuarants"
@@ -55,7 +58,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {loading ? (
-          fillArray.map((i) => <Shimmer />)
+          fillArray.map((i, index) => <Shimmer key={index * Math.random()} />)
         ) : filteredRes.length ? (
           filteredRes.map((details) => <RestaurantCard data={details.info} />)
         ) : (

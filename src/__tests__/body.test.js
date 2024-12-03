@@ -1,5 +1,15 @@
-import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { render, screen, waitFor } from "@testing-library/react";
 import Body from "../components/Body";
+import { testData } from "../__mocks__/testData";
+import { act } from "react-dom/test-utils";
+
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve(testData), // Mock response
+  })
+);
+
 describe("Body Component", () => {
   test(" Body should be loaded on render", () => {
     render(<Body />);
@@ -16,12 +26,17 @@ describe("Body Component", () => {
   });
   test("renders list of shimmer UI", () => {
     render(<Body />);
-    const shimmerElements = screen.findAllByTestId("shimmer-main");
+    const shimmerElements = screen.getAllByTestId("shimmer-main");
     expect(shimmerElements).toHaveLength(30);
   });
   test("renders list of restuarants", async () => {
-    render(<Body />);
-    const restuarants = await screen.findAllByTestId("rest-card");
-    expect(restuarants).toHaveLength(8);
+    await act(async () => render(<Body />));
+    await waitFor(
+      () => {
+        const resElements = screen.getAllByTestId("resCard");
+        expect(resElements).toHaveLength(8); // Expecting 8 restaurant cards
+      },
+      { timeout: 1000 }
+    );
   });
 });

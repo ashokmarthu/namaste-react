@@ -3,7 +3,7 @@ import { RESTAURANT_IMAGE_URL } from "../utils/constants";
 const RestaurantCard = ({ data }) => {
   const { name, avgRating, cuisines, areaName, cloudinaryImageId, sla } = data;
   return (
-    <div className="rest-card" data-testid="rest-card">
+    <div className="rest-card" data-testid="resCard">
       <div className="res-img">
         <img
           src={RESTAURANT_IMAGE_URL + cloudinaryImageId}

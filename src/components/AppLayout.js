@@ -4,48 +4,38 @@ import Footer from "./Footer";
 import Login from "./Login";
 import Cart from "./Cart";
 import About from "./About";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { setUserDetails } from "../reducers/userSlice";
+import { BrowserRouter, Routes, Route } from "react-router";
+import RestaurantMenu from "./RestaurantMenu";
+import { ProtectedRoute } from "../utils/ProtectedRoute";
+import Logout from "./Logout";
 
+const Home = () => {
+  return (
+    <>
+      <Body />
+      <Footer />
+    </>
+  );
+};
 const AppLayout = () => {
-  const [loading, setLoading] = useState(true);
-  const details = useSelector((store) => store.user.userDetails);
-  const dispatch = useDispatch();
-  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-
-  useEffect(() => {
-    if (!details && userDetails) {
-      dispatch(setUserDetails(userDetails));
-    }
-    setLoading(false);
-  }, [details, userDetails, dispatch]);
-  if (loading) {
-    // You can show a loading spinner or placeholder while loading
-    return <div>Loading...</div>;
-  }
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="logout" element={<Logout />} />
+        <Route path="login" element={<Login />} />
         <Route
-          path="/dashboard"
+          path="/"
           element={
-            details && details.stsTokenManager.accessToken ? (
-              <>
-                <Header />
-                <Body />
-                <Footer />
-              </>
-            ) : (
-              <Navigate to="/" replace />
-            )
+            <ProtectedRoute>
+              <Header />
+            </ProtectedRoute>
           }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/cart" element={<Cart />} />
+        >
+          <Route index element={<Home />} />
+          <Route path="restaurants/:id" element={<RestaurantMenu />} />
+        </Route>
+        <Route path="about" element={<About />} />
+        <Route path="cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );

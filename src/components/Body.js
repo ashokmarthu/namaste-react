@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { RESTAURANT_DETAIS_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
 const Body = () => {
   const [resDetails, setResDetails] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
@@ -60,7 +61,11 @@ const Body = () => {
         {loading ? (
           fillArray.map((i, index) => <Shimmer key={index * Math.random()} />)
         ) : filteredRes.length ? (
-          filteredRes.map((details) => <RestaurantCard data={details.info} />)
+          filteredRes.map((restaurant) => (
+            <Link to={"/restaurants/" + restaurant.info.id}>
+              <RestaurantCard data={restaurant.info} />
+            </Link>
+          ))
         ) : (
           <p>No Results Found</p>
         )}

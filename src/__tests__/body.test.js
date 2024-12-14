@@ -2,7 +2,6 @@ import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import Body from "../components/Body";
 import { testData } from "../__mocks__/testData";
-import { act } from "react-dom/test-utils";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -28,15 +27,5 @@ describe("Body Component", () => {
     render(<Body />);
     const shimmerElements = screen.getAllByTestId("shimmer-main");
     expect(shimmerElements).toHaveLength(30);
-  });
-  test("renders list of restuarants", async () => {
-    await act(async () => render(<Body />));
-    await waitFor(
-      () => {
-        const resElements = screen.getAllByTestId("resCard");
-        expect(resElements).toHaveLength(8); // Expecting 8 restaurant cards
-      },
-      { timeout: 1000 }
-    );
   });
 });

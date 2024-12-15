@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router";
 import { HEADER_LOGO } from "../utils/constants";
 import { useSelector } from "react-redux";
 const Header = () => {
-  const photoURL = useSelector((store) => store.user.userDetails.photoURL);
   return (
     <>
       <div className="header">
@@ -31,13 +30,6 @@ const Header = () => {
             <li>
               <Link to="/logout" className="link">
                 <div className="logout-fn">
-                  <img
-                    src={photoURL}
-                    width="30px"
-                    height="30px"
-                    alt="food-logo"
-                    style={{ borderRadius: "2px", objectFit: "cover" }}
-                  />
                   Logout
                 </div>
               </Link>

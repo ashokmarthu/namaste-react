@@ -7,7 +7,7 @@ const RestaurantMenu = () => {
   console.log(categoryInfo)
   if (!categoryInfo) return "Loading";
   return (
-    <div className="body">
+    <div className="res-menu">
       {categoryInfo.map((category) => (
         <RestaurantCategory category={category} />
       ))}

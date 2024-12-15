@@ -1,5 +1,4 @@
 import { RESTAURANT_IMAGE_URL } from "../utils/constants";
-
 const Item = ({ item }) => {
   const { name, price, description, ratings, imageId } = item.info;
   const { rating, ratingCountV2 } = ratings.aggregatedRating;
@@ -14,8 +13,14 @@ const Item = ({ item }) => {
         </div>
         <div>{description?.split("[")[0]?.split("|")[1]}</div>
       </div>
-      <div className="item-img">
-        <img src={RESTAURANT_IMAGE_URL + imageId}  className="img-item" />
+      <div className="img-container">
+        <div className="img-con">
+          <img
+            src={RESTAURANT_IMAGE_URL + imageId}
+            className="img-item"
+            loading="lazy"
+          />
+        </div>
         <button>Add To cart</button>
       </div>
     </div>

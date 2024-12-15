@@ -8,8 +8,8 @@ const RestaurantCard = ({ data }) => {
         <img
           src={RESTAURANT_IMAGE_URL + cloudinaryImageId}
           alt="rest-logo"
-          className="rest-logo"
-          height="180px"
+          className="res-logo"
+          loading="lazy"
         />
       </div>
       <div className="res-content">

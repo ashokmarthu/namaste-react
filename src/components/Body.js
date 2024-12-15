@@ -62,7 +62,7 @@ const Body = () => {
           fillArray.map((i, index) => <Shimmer key={index * Math.random()} />)
         ) : filteredRes.length ? (
           filteredRes.map((restaurant) => (
-            <Link to={"/restaurants/" + restaurant.info.id}>
+            <Link className="res-link" to={"/restaurants/" + restaurant.info.id}>
               <RestaurantCard data={restaurant.info} />
             </Link>
           ))

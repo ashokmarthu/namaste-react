@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import RestaurantMenu from "./RestaurantMenu";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
 import Logout from "./Logout";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "../reducers/userSlice";
 
 const Home = () => {
   return (
@@ -18,6 +20,11 @@ const Home = () => {
   );
 };
 const AppLayout = () => {
+  const userDetails = localStorage.getItem("userDetails");
+  const dispatch = useDispatch();
+  if (userDetails) {
+    dispatch(setUserDetails(JSON.parse(userDetails)));
+  }
   return (
     <BrowserRouter>
       <Routes>

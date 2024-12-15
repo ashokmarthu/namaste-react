@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 const Login = () => {
-  const userDetails = localStorage.getItem("userDetails");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userDetails = localStorage.getItem("userDetails");
   const signInWithGoogle = async () => {
     try {
       const res = await signInWithGooglePopup();
@@ -18,13 +18,13 @@ const Login = () => {
       console.error(err);
     }
   };
+
   useEffect(() => {
     if (userDetails) {
       dispatch(setUserDetails(JSON.parse(userDetails)));
-      return navigate("/");
+      navigate("/");
     }
-  }, [navigate]);
-
+  }, [navigate, userDetails]);
   return (
     <div className="login">
       <img

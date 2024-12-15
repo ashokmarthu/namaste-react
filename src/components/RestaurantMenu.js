@@ -4,6 +4,7 @@ import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { categoryInfo } = useRestaurantMenu(229);
+  console.log(categoryInfo)
   if (!categoryInfo) return "Loading";
   return (
     <div className="body">

@@ -1,11 +1,20 @@
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 export const ProtectedRoute = ({ children }) => {
+  const navigate = useNavigate();
   const userDetails = useSelector((store) => store.user.userDetails);
-  console.log(userDetails,"fff")
-  let navigate = useNavigate();
-  if (!userDetails) {
-    navigate("/login");
+
+  useEffect(() => {
+    if (!userDetails) {
+      navigate("/login");
+    }
+  }, [userDetails, navigate]);
+
+  if (userDetails) {
+    return children;
   }
-  return children;
+
+  return null;
 };

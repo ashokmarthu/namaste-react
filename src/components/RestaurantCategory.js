@@ -16,15 +16,11 @@ const RestaurantCategory = ({ category }) => {
       <div className="item-container">
         <button className="item-btn" onClick={() => setShowItem(!showItem)}>
           <div>{title}</div>
-          <div>
-            {showItem ? (
-              <HiChevronUp  />
-            ) : (
-              <HiChevronDown  />
-            )}
-          </div>
+          <div>{showItem ? <HiChevronUp /> : <HiChevronDown />}</div>
         </button>
-        {showItem ? itemCards.map((card) => <Item item={card.card} />) : null}
+        {showItem
+          ? itemCards.map(({ card }) => <Item item={card} key={card.info.id} />)
+          : null}
       </div>
     </div>
   );

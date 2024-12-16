@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { RESTAURANT_DETAIS_API } from "../utils/constants";
+import { RESTAURANT_DETAILS_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 const Body = () => {
+  const geoLocationInfo = useSelector((store) => store.user.geoLocationInfo);
   const [resDetails, setResDetails] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +13,11 @@ const Body = () => {
   const fillArray = new Array(30).fill(0);
   const fetchResDetails = async () => {
     try {
-      const res = await fetch(RESTAURANT_DETAIS_API);
+      const URL = RESTAURANT_DETAILS_API.replace(
+        "${lat}",
+        geoLocationInfo.latitude
+      ).replace("${lng}", geoLocationInfo.longitude);
+      const res = await fetch(URL);
       const data = await res.json();
       setResDetails(
         data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
@@ -38,7 +44,7 @@ const Body = () => {
 
   useEffect(() => {
     fetchResDetails();
-  }, []);
+  }, [geoLocationInfo]);
 
   return (
     <div className="body">
@@ -62,7 +68,11 @@ const Body = () => {
           fillArray.map((i, index) => <Shimmer key={index * Math.random()} />)
         ) : filteredRes.length ? (
           filteredRes.map((restaurant) => (
-            <Link className="res-link" to={"/restaurants/" + restaurant.info.id}>
+            <Link
+              className="res-link"
+              to={"/restaurants/" + restaurant.info.id}
+              key={restaurant.info.id}
+            >
               <RestaurantCard data={restaurant.info} />
             </Link>
           ))

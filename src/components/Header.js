@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router";
 import { HEADER_LOGO } from "../utils/constants";
-import { useSelector } from "react-redux";
+import GeoLocationInfo from "./GeoLocationInfo";
 const Header = () => {
   return (
     <>
@@ -14,6 +14,9 @@ const Header = () => {
             alt="food-logo"
             className="header-img"
           />
+        </div>
+        <div>
+          <GeoLocationInfo />
         </div>
         <div className="nav-items">
           <ul>
@@ -29,9 +32,7 @@ const Header = () => {
             </li>
             <li>
               <Link to="/logout" className="link">
-                <div className="logout-fn">
-                  Logout
-                </div>
+                <div className="logout-fn">Logout</div>
               </Link>
             </li>
           </ul>

@@ -39,7 +39,7 @@ const AppLayout = () => {
           }
         >
           <Route index element={<Home />} />
-          <Route path="restaurants/:id" element={<RestaurantMenu />} />
+          <Route path="restaurants/:resId" element={<RestaurantMenu />} />
         </Route>
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />

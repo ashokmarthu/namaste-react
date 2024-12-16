@@ -1,10 +1,10 @@
 import React from "react";
 import useRestaurantMenu from "../Hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-
+import { useParams } from "react-router";
 const RestaurantMenu = () => {
-  const { categoryInfo } = useRestaurantMenu(229);
-  console.log(categoryInfo)
+  const { resId } = useParams();
+  const { categoryInfo } = useRestaurantMenu(resId);
   if (!categoryInfo) return "Loading";
   return (
     <div className="res-menu">

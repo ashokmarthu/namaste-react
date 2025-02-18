@@ -7,7 +7,6 @@ const HeaderComponent = ()=>{
     return {
         <div id ="container">
         <Title />
-        <h1> Hello </h1>
         </div>
     }
 }
